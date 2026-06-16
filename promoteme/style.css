@@ -30,6 +30,9 @@ body {
   position: relative;
   overflow: hidden;
   border: 0.5px solid rgba(56, 189, 248, 0.15);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
 .hero::before {
@@ -399,6 +402,28 @@ body {
   border-color: #38bdf8;
 }
 
+/* ── HERO AVATAR ── */
+.hero {
+  position: relative;
+}
+
+.hero-avatar {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(56,189,248,0.12);
+  box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+  z-index: 5;
+  order: 2;
+  margin-left: auto;
+}
+
+.hero-content {
+  flex: 1 1 auto;
+}
+
 /* ── RESPONSIVE / MOBILE TWEAKS ── */
 @media (max-width: 600px) {
   body {
@@ -450,6 +475,153 @@ body {
   .cta-section h2 {
     font-size: 22px;
   }
+}
+
+/* Avatar sizing across breakpoints */
+@media (max-width: 900px) {
+  .hero-avatar {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-avatar {
+    width: 88px;
+    height: 88px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .hero {
+    padding-right: 96px;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-avatar {
+    width: 48px;
+    height: 48px;
+    order: 2;
+    margin-left: 0;
+    align-self: flex-end;
+  }
+
+  .hero {
+    padding-right: 1.25rem;
+  }
+}
+
+/* ── SUBTLE ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.98) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.hero-content > * {
+  opacity: 0;
+  animation: fadeUp 600ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.06s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.12s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.18s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.24s; }
+
+.hero-avatar {
+  /* float only on larger screens */
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.badge, .skill-chip {
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.badge:hover, .skill-chip:hover {
+  transform: translateY(-4px);
+}
+
+.proj-card {
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.proj-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > *, .hero-avatar, .proj-card, .badge, .skill-chip {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── PAGE LOADER ── */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #060d1a;
+  color: #e8f4fd;
+  z-index: 9999;
+  transition: opacity 320ms ease;
+}
+
+#page-loader.page-loading-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 6px solid rgba(232,244,253,0.08);
+  border-top-color: #38bdf8;
+  box-sizing: border-box;
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms cubic-bezier(.2,.9,.2,1), transform 600ms cubic-bezier(.2,.9,.2,1);
+  will-change: opacity, transform;
+}
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
+  .spinner { animation: none !important; }
 }
 
 .contact-link svg {
