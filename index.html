@@ -6,133 +6,301 @@
     <title>Luis Ramirez — Full Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header class="floating-header">
+      <div class="header-inner">
+        <a href="#" class="header-logo" style="text-transform: lowercase"
+          >{ letsCode }<span
+            style="color: #38bdf8; animation: blink 1s step-end infinite"
+            >_</span
+          ></a
+        >
+        <style>
+          @keyframes blink {
+            50% {
+              opacity: 0;
+            }
+          }
+        </style>
+        <nav class="header-nav">
+          <a href="#contact" class="header-btn">Contact Me 📧</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- PAGE LOADER -->
     <div id="page-loader" aria-hidden="true">
-      <div class="loader-inner"><div class="spinner" role="img" aria-label="Loading"></div></div>
+      <div class="loader-inner">
+        <div class="spinner" role="img" aria-label="Loading"></div>
+      </div>
     </div>
-    
+
     <main class="page">
+      <!-- HERO -->
       <section class="hero">
         <img class="hero-avatar" src="IMG_E2539.JPG" alt="Luis Ramirez" />
         <div class="hero-content">
-          <p class="hero-tag">Available for hire &middot; Full-Stack Developer &middot; Wendell, NC</p>
+          <p class="hero-tag">
+            Available for hire &middot; Full-Stack Developer &middot; Wendell,
+            NC
+          </p>
           <h1 class="hero-name">Hi, I'm <span>Luis Ramirez</span></h1>
-          <p class="hero-sub">Full-stack developer specializing in JavaScript, React, and Node.js. I build scalable, user-focused web apps — from real estate platforms to AI chatbots — and I'm ready to contribute from day one.</p>
+          <p class="hero-sub">
+            Full-stack developer specializing in JavaScript, React, and Node.js.
+            I build scalable, user-focused web apps — from real estate platforms
+            to AI chatbots — and I'm ready to contribute from day one.
+          </p>
           <div class="badges">
-            <span class="badge">JavaScript</span><span class="badge">React</span><span class="badge">Node.js</span><span class="badge">TypeScript</span>
-            <span class="badge">PostgreSQL</span><span class="badge">MongoDB</span><span class="badge">Python</span><span class="badge">AWS</span>
+            <span class="badge">JavaScript</span><span class="badge">React</span
+            ><span class="badge">Node.js</span
+            ><span class="badge">TypeScript</span>
+            <span class="badge">PostgreSQL</span
+            ><span class="badge">MongoDB</span><span class="badge">Python</span
+            ><span class="badge">AWS</span>
           </div>
           <div class="cta-row">
-            <a class="btn-outline" href="https://github.com/Luisrc91" target="_blank" rel="noopener">GitHub ↗</a>
+            <a
+              class="btn-outline"
+              href="https://github.com/Luisrc91"
+              target="_blank"
+              rel="noopener"
+              >GitHub ↗</a
+            >
           </div>
         </div>
       </section>
 
+      <!-- ABOUT -->
       <section class="section reveal">
         <p class="section-label">About me</p>
         <div class="about-card">
-          <p>I'm a <strong>full-stack developer</strong> who earned my Software Development Professional Certificate from <strong>NC State University</strong>. My background spans front-end design to back-end architecture, with hands-on experience building real production-grade projects.</p>
-          <p>Before tech, I spent years in fast-paced, high-accountability environments — roofing, Amazon fulfillment, warehouse logistics. That work ethic follows me into every codebase: I ship reliably, communicate clearly, and don't stop until things work.</p>
+          <p>
+            I'm a <strong>full-stack developer</strong> who earned my Software
+            Development Professional Certificate from
+            <strong>NC State University</strong>. My background spans front-end
+            design to back-end architecture, with hands-on experience building
+            real production-grade projects.
+          </p>
+          <p>
+            Before tech, I spent years in fast-paced, high-accountability
+            environments — roofing, Amazon fulfillment, warehouse logistics.
+            That work ethic follows me into every codebase: I ship reliably,
+            communicate clearly, and don't stop until things work.
+          </p>
         </div>
       </section>
 
+      <!-- SERVICES -->
       <section class="section reveal">
         <p class="section-label">What I can build for you</p>
         <div class="services-grid">
           <div class="srv-card">
             <div class="srv-icon">🖥️</div>
             <p class="srv-title">Full-stack web apps</p>
-            <p class="srv-desc">End-to-end MERN/PERN stack apps with auth, REST APIs, and databases.</p>
+            <p class="srv-desc">
+              End-to-end MERN/PERN stack apps with auth, REST APIs, and
+              databases.
+            </p>
           </div>
           <div class="srv-card">
             <div class="srv-icon">⚛️</div>
             <p class="srv-title">React front-ends</p>
-            <p class="srv-desc">Responsive, accessible UIs with React, Redux, Tailwind, and Next.js.</p>
+            <p class="srv-desc">
+              Responsive, accessible UIs with React, Redux, Tailwind, and
+              Next.js.
+            </p>
           </div>
           <div class="srv-card">
             <div class="srv-icon">🔌</div>
             <p class="srv-title">REST APIs</p>
-            <p class="srv-desc">Secure Express.js APIs with JWT auth, role-based access, and SQL/NoSQL backends.</p>
+            <p class="srv-desc">
+              Secure Express.js APIs with JWT auth, role-based access, and
+              SQL/NoSQL backends.
+            </p>
           </div>
           <div class="srv-card">
             <div class="srv-icon">🔒</div>
             <p class="srv-title">Auth & security</p>
-            <p class="srv-desc">JWT, OAuth, Google Sign-In, MFA, IAM — keeping apps secure from the start.</p>
+            <p class="srv-desc">
+              JWT, OAuth, Google Sign-In, MFA, IAM — keeping apps secure from
+              the start.
+            </p>
           </div>
         </div>
       </section>
 
+      <!-- TECH STACK -->
       <section class="section reveal">
         <p class="section-label">Tech stack</p>
         <div class="skills-row">
           <div class="skills-track">
-            <span class="skill-chip">HTML / CSS / SASS</span><span class="skill-chip">JavaScript</span><span class="skill-chip">TypeScript</span>
-            <span class="skill-chip">React</span><span class="skill-chip">Redux</span><span class="skill-chip">Next.js</span><span class="skill-chip">Vite</span>
-            <span class="skill-chip">Node.js</span><span class="skill-chip">Express.js</span><span class="skill-chip">Python / Flask</span>
-            <span class="skill-chip">Java / Spring Boot</span><span class="skill-chip">PostgreSQL</span><span class="skill-chip">MongoDB</span>
-            <span class="skill-chip">Sequelize</span><span class="skill-chip">SQLite</span><span class="skill-chip">Tailwind CSS</span>
-            <span class="skill-chip">Bootstrap</span><span class="skill-chip">AWS</span><span class="skill-chip">Git / GitHub</span><span class="skill-chip">Agile / Scrum</span>
+            <span class="skill-chip">HTML / CSS / SASS</span
+            ><span class="skill-chip">JavaScript</span
+            ><span class="skill-chip">TypeScript</span>
+            <span class="skill-chip">React</span
+            ><span class="skill-chip">Redux</span
+            ><span class="skill-chip">Next.js</span
+            ><span class="skill-chip">Vite</span>
+            <span class="skill-chip">Node.js</span
+            ><span class="skill-chip">Express.js</span
+            ><span class="skill-chip">Python / Flask</span>
+            <span class="skill-chip">Java / Spring Boot</span
+            ><span class="skill-chip">PostgreSQL</span
+            ><span class="skill-chip">MongoDB</span>
+            <span class="skill-chip">Sequelize</span
+            ><span class="skill-chip">SQLite</span
+            ><span class="skill-chip">Tailwind CSS</span>
+            <span class="skill-chip">Bootstrap</span
+            ><span class="skill-chip">AWS</span
+            ><span class="skill-chip">Git / GitHub</span
+            ><span class="skill-chip">Agile / Scrum</span>
           </div>
         </div>
       </section>
 
+      <!-- PROJECTS -->
       <section class="section reveal">
         <p class="section-label">Projects</p>
         <div class="projects-grid">
+          <!-- Project 1 -->
           <div class="proj-card">
             <p class="proj-lang">JavaScript · HTML · CSS · Gemma AI</p>
             <h3 class="proj-title">Local ChatGPT App</h3>
-            <p class="proj-desc">Privacy-first AI chatbot that runs a local Gemma model — no external APIs, no data leaks. Features real-time streaming responses.</p>
-            <a class="proj-link" href="https://github.com/Luisrc91/chatgptlocally" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            <p class="proj-desc">
+              Privacy-first AI chatbot that runs a local Gemma model — no
+              external APIs, no data leaks. Features real-time streaming
+              responses.
+            </p>
+            <a
+              class="proj-link"
+              href="https://github.com/Luisrc91/chatgptlocally"
+              target="_blank"
+              rel="noopener"
+              >Code on GitHub ↗</a
+            >
           </div>
+          <!-- Project 2 -->
           <div class="proj-card">
             <p class="proj-lang">React · MongoDB · Express · JWT</p>
             <h3 class="proj-title">Real Estate Platform</h3>
-            <p class="proj-desc">Mobile-friendly property search app with Google OAuth, JWT sessions, Redux state management, and advanced property filtering.</p>
-            <a class="proj-link" href="https://github.com/Luisrc91/realestatee" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            <p class="proj-desc">
+              Mobile-friendly property search app with Google OAuth, JWT
+              sessions, Redux state management, and advanced property filtering.
+            </p>
+            <a
+              class="proj-link"
+              href="https://github.com/Luisrc91/realestatee"
+              target="_blank"
+              rel="noopener"
+              >Code on GitHub ↗</a
+            >
           </div>
+          <!-- Project 3 -->
           <div class="proj-card">
             <p class="proj-lang">React · Node.js · SQL · JWT</p>
             <h3 class="proj-title">Event Planner</h3>
-            <p class="proj-desc">Secure event management app with role-based JWT auth, responsive Tailwind UI, and a robust Express + SQL backend.</p>
-            <a class="proj-link" href="https://github.com/Luisrc91/eventplanner" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            <p class="proj-desc">
+              Secure event management app with role-based JWT auth, responsive
+              Tailwind UI, and a robust Express + SQL backend.
+            </p>
+            <a
+              class="proj-link"
+              href="https://github.com/Luisrc91/eventplanner"
+              target="_blank"
+              rel="noopener"
+              >Code on GitHub ↗</a
+            >
           </div>
+          <!-- Project 4 -->
           <div class="proj-card">
             <p class="proj-lang">React · Bootstrap · Node.js</p>
             <h3 class="proj-title">Recipe Book</h3>
-            <p class="proj-desc">Collaborative group project — recipe app with user auth and a fast search feature. Built the React front-end using Bootstrap.</p>
-            <a class="proj-link" href="https://github.com/Luisrc91/ABCL-Recipe-Book" target="_blank" rel="noopener">Code on GitHub ↗</a>
+            <p class="proj-desc">
+              Collaborative group project — recipe app with user auth and a fast
+              search feature. Built the React front-end using Bootstrap.
+            </p>
+            <a
+              class="proj-link"
+              href="https://github.com/Luisrc91/ABCL-Recipe-Book"
+              target="_blank"
+              rel="noopener"
+              >Code on GitHub ↗</a
+            >
           </div>
         </div>
       </section>
 
+      <!-- EDUCATION -->
       <section class="section reveal">
         <p class="section-label">Education</p>
         <div class="edu-card">
           <div class="edu-icon">🎓</div>
           <div>
             <p class="edu-school">NC State University — Raleigh, NC</p>
-            <p class="edu-cert">Software Development Professional Certificate</p>
-            <p class="edu-date">Sep 2022 – Jul 2023 &middot; Full Stack, React, MERN/PERN, Python, Cybersecurity</p>
+            <p class="edu-cert">
+              Software Development Professional Certificate
+            </p>
+            <p class="edu-date">
+              Sep 2022 – Jul 2023 &middot; Full Stack, React, MERN/PERN, Python,
+              Cybersecurity
+            </p>
           </div>
         </div>
       </section>
 
-      <section class="cta-section reveal">
+      <!-- CONTACT CTA -->
+      <section id="contact" class="cta-section reveal">
         <h2>Let's build something together</h2>
-        <p>Open to freelance projects, contract work, and full-time roles in the Raleigh–Durham area or remote.<br />Fast learner. Ships clean code.</p>
+        <p>
+          Open to freelance projects, contract work, and full-time roles in the
+          Raleigh–Durham area or remote.<br />Fast learner. Ships clean code.
+        </p>
         <div class="contact-row">
-          <a class="contact-link" href="mailto:Luisrcal100@gmail.com">📧 Luisrcal100@gmail.com</a>
-          <a class="contact-link" href="https://github.com/Luisrc91" target="_blank" rel="noopener">💻 GitHub</a>
-          <a class="contact-link" href="https://www.linkedin.com/in/luisramirez0618/" target="_blank" rel="noopener">👔 LinkedIn</a>
+          <a class="contact-link" href="mailto:Luisrcal100@gmail.com"
+            >📧 Luisrcal100@gmail.com</a
+          >
+          <a
+            class="contact-link"
+            href="https://github.com/Luisrc91"
+            target="_blank"
+            rel="noopener"
+            >💻 GitHub</a
+          >
+          <a
+            class="contact-link"
+            href="https://www.linkedin.com/in/luisramirez0618/"
+            target="_blank"
+            rel="noopener"
+            >👔 LinkedIn</a
+          >
           <a class="contact-link" href="tel:9192259134">📞 (919) 225-9134</a>
         </div>
       </section>
     </main>
 
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">
+      ↑
+    </button>
+
     <script src="animations.js" defer></script>
+    <footer class="page-footer">
+      <div class="footer-inner">
+        <p>
+          &copy; <span id="current-year">2026</span> Luis Ramirez. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">
+      ↑
+    </button>
   </body>
 </html>

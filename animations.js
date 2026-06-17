@@ -1,5 +1,7 @@
 (function () {
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   // ── PAGE LOADER ──
   const loader = document.getElementById("page-loader");
@@ -30,7 +32,7 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     revealEls.forEach((el) => io.observe(el));
   } else {
@@ -42,9 +44,15 @@
   if (hero && !prefersReduced) {
     const onScroll = () => {
       const rect = hero.getBoundingClientRect();
-      const dist = rect.top - (window.innerHeight / 2);
-      hero.style.setProperty("--hero-before-ty", Math.round(dist * 0.03) + "px");
-      hero.style.setProperty("--hero-after-ty", Math.round(dist * -0.02) + "px");
+      const dist = rect.top - window.innerHeight / 2;
+      hero.style.setProperty(
+        "--hero-before-ty",
+        Math.round(dist * 0.03) + "px",
+      );
+      hero.style.setProperty(
+        "--hero-after-ty",
+        Math.round(dist * -0.02) + "px",
+      );
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -57,7 +65,6 @@
     const track = container?.querySelector(".skills-track");
     if (!container || !track || prefersReduced) return;
 
-    // Create a continuous seamless clone loop
     const clone = track.cloneNode(true);
     clone.classList.add("skills-track-clone");
     container.appendChild(clone);
@@ -69,8 +76,10 @@
     track.style.left = "0";
     clone.style.left = trackWidth + "px";
 
-    let pos = 0, rafId = null, last = null;
-    const pxPerMs = 0.06; // 60px/s
+    let pos = 0,
+      rafId = null,
+      last = null;
+    const pxPerMs = 0.06;
 
     function step(now) {
       if (!last) last = now;
@@ -82,10 +91,16 @@
     }
 
     function start() {
-      if (!rafId) { last = null; rafId = requestAnimationFrame(step); }
+      if (!rafId) {
+        last = null;
+        rafId = requestAnimationFrame(step);
+      }
     }
     function stop() {
-      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
     }
 
     container.addEventListener("mouseenter", stop);
@@ -101,4 +116,48 @@
 
     start();
   })();
+
+  // ── BACK TO TOP & BUBBLE HEADER SHRINK CONTROL ──
+  const backToTopBtn = document.getElementById("back-to-top");
+  const floatingHeader = document.querySelector(".floating-header");
+
+  if (backToTopBtn || floatingHeader) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentScrollY = window.scrollY;
+
+        if (backToTopBtn) {
+          if (currentScrollY > 400) {
+            backToTopBtn.classList.add("show");
+          } else {
+            backToTopBtn.classList.remove("show");
+          }
+        }
+
+        if (floatingHeader && !prefersReduced) {
+          if (currentScrollY > 75) {
+            floatingHeader.classList.add("shrink");
+          } else {
+            floatingHeader.classList.remove("shrink");
+          }
+        }
+      },
+      { passive: true },
+    );
+
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReduced ? "auto" : "smooth",
+        });
+      });
+    }
+  }
+  // ── DYNAMIC COPYRIGHT YEAR ──
+  const yearSpan = document.getElementById("current-year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
 })();
