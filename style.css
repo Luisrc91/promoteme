@@ -1,4 +1,8 @@
 /* ── RESET & BASE ── */
+html {
+  scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -10,7 +14,7 @@ body {
   background: #060d1a;
   color: #e8f4fd;
   min-height: 100vh;
-  padding: 6.5rem 1rem 2rem; /* Clearance for the floating iOS navbar */
+  padding: 6.5rem 1rem 2rem;
   position: relative;
 }
 
@@ -38,28 +42,27 @@ body::before {
   z-index: 1;
 }
 
-/* ── iOS GLASS BUBBLE NAVBAR ── */
+/* ==========================================================================
+   ── iOS GLASS BUBBLE NAVBAR
+   ========================================================================== */
 .floating-header {
   position: fixed;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 1.5rem);
-  max-width: 540px; /* Traditional compact Apple capsule width */
-  z-index: 1000;
+  max-width: 540px; 
+  z-index: 10000;
   padding: 0.5rem 0.75rem 0.5rem 1.25rem;
   
-  /* Apple Glassmorphism Architecture */
-  background: rgba(15, 23, 42, 0.35);
+  background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(20px) saturate(190%);
   -webkit-backdrop-filter: blur(20px) saturate(190%);
   
   border-radius: 99px;
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Light specular edge */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 
-              0 10px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
               
-  /* Apple Elastic Ease Transition */
   transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.4s ease,
               border-color 0.4s ease,
@@ -67,9 +70,9 @@ body::before {
 }
 
 .floating-header.shrink {
-  max-width: 280px; /* Tight visual pill container */
-  background: rgba(15, 23, 42, 0.65);
-  border-color: rgba(255, 255, 255, 0.12);
+  max-width: 280px; 
+  background: rgba(15, 23, 42, 0.75); 
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .header-inner {
@@ -80,16 +83,17 @@ body::before {
 }
 
 .header-logo {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: #ffffff;
+  color: #f5eeee;
   text-decoration: none;
   letter-spacing: -0.01em;
-  transition: opacity 0.2s ease;
 }
 
-.header-logo:hover { opacity: 0.8; }
+.header-nav {
+  display: block; 
+}
 
 .header-btn {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
@@ -98,16 +102,16 @@ body::before {
   letter-spacing: -0.01em;
   color: #ffffff;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.1); 
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12); 
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 6px 14px;
   border-radius: 99px;
-  transition: background 0.2s, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.2s ease;
 }
 
 .header-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* ── HERO ── */
@@ -444,6 +448,29 @@ body::before {
   border-color: #38bdf8;
 }
 
+/* ── COPYRIGHT FOOTER ── */
+.page-footer {
+  width: 100%;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page-footer p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
 /* ── PAGE LOADER & REVEAL ── */
 #page-loader {
   position: fixed;
@@ -539,6 +566,7 @@ body::before {
   .cta-section { padding: 1.75rem 1rem; }
   .cta-section h2 { font-size: 22px; }
   
+  .page-footer { padding: 1.5rem 0.75rem; margin-top: 2rem; }
   #back-to-top { bottom: 1.25rem; right: 1.25rem; width: 38px; height: 38px; font-size: 16px; }
 }
 
@@ -554,34 +582,4 @@ body::before {
   .reveal { opacity: 1 !important; transform: none !important; }
   .spinner { animation: none !important; }
   body::before { filter: none; opacity: 0.045; }
-}
-
-/* ── COPYRIGHT FOOTER ── */
-.page-footer {
-  width: 100%;
-  padding: 2rem 1rem;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  position: relative;
-  z-index: 1;
-}
-
-.footer-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.page-footer p {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  color: #64748b;
-  letter-spacing: 0.02em;
-}
-
-@media (max-width: 600px) {
-  .page-footer {
-    padding: 1.5rem 0.75rem;
-    margin-top: 2rem;
-  }
 }
