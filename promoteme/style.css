@@ -20,6 +20,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── HERO ── */
@@ -681,6 +683,35 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none !important; transform: none !important; opacity: 1 !important; }
   .spinner { animation: none !important; }
+}
+
+/* Subtle animated background gradient behind the page content */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(99,102,241,0.18), rgba(236,72,153,0.14), rgba(16,185,129,0.10), rgba(14,165,233,0.08));
+  background-size: 400% 400%;
+  opacity: 0.18;
+  filter: blur(28px);
+  transform: translateZ(0);
+  animation: gradientShift 40s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+    filter: none;
+    opacity: 0.045;
+  }
 }
 
 .contact-link svg {
