@@ -86,7 +86,7 @@ body::before {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: #f5eeee;
+  color: #ffffff;
   text-decoration: none;
   letter-spacing: -0.01em;
 }
@@ -542,11 +542,34 @@ body::before {
 @media (max-width: 700px) { .hero-avatar { width: 88px; height: 88px; } }
 
 @media (max-width: 600px) {
-  body { padding: 5.5rem 0.75rem 1.25rem; }
+  body { padding: 6.5rem 0.75rem 1.25rem; }
   .page { max-width: 100%; padding: 0 0.5rem; }
   
-  .floating-header { top: 0.75rem; width: calc(100% - 1.25rem); padding: 0.45rem 0.6rem 0.45rem 1.15rem; }
-  .floating-header.shrink { max-width: 240px; }
+  /* ── LOOSENED MOBILE CAPSULE CONFIGURATION ── */
+  .floating-header { 
+    top: 1rem; 
+    width: calc(100% - 1.5rem); 
+    max-width: 480px; 
+    padding: 0.65rem 1rem 0.65rem 1.4rem; 
+  }
+  
+  .floating-header.shrink { 
+    max-width: 310px; 
+    padding: 0.55rem 0.85rem 0.55rem 1.25rem;
+  }
+  
+  .header-inner {
+    gap: 12px; 
+  }
+
+  .header-logo {
+    font-size: 14px; 
+  }
+
+  .header-btn {
+    font-size: 12px; 
+    padding: 5px 12px; 
+  }
   
   .hero { 
     padding: 2.5rem 1.75rem 2rem; 
