@@ -86,7 +86,7 @@ body::before {
   border: 3px solid rgba(56,189,248,0.12);
   box-shadow: 0 6px 20px rgba(2,6,23,0.6);
   z-index: 5;
-  order: 2;
+  order: 0; /* Keeps structural markup flow default */
   margin-left: auto;
   animation: floatY 6s ease-in-out infinite;
 }
@@ -445,17 +445,31 @@ body::before {
 @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes chipPulse { 0%, 100% { box-shadow: 0 6px 18px rgba(var(--chip-glow), 0.04); transform: translateY(0); } 50% { box-shadow: 0 12px 30px rgba(var(--chip-glow), 0.12); transform: translateY(-3px); } }
 
-/* ── RESPONSIVE RESPONSIVENESS ── */
-@media (max-width: 900px) { .hero-avatar { width: 110px; height: 110px; } }
-@media (max-width: 700px) { .hero-avatar { width: 88px; height: 88px; } }
+/* ── RESPONSIVE MEDIA BREAKPOINTS ── */
+@media (max-width: 900px) { 
+  .hero-avatar { width: 110px; height: 110px; } 
+}
+
+@media (max-width: 700px) { 
+  .hero-avatar { width: 88px; height: 88px; } 
+}
 
 @media (max-width: 600px) {
   body { padding: 1.25rem 0.75rem; }
   .page { max-width: 100%; padding: 0 0.5rem; }
-  .hero { padding: 2.5rem 1.75rem 2rem; padding-right: 96px; }
+  
+  /* Layout switches to row-reverse so the avatar positions top-right naturally */
+  .hero { 
+    padding: 2.5rem 1.75rem 2rem; 
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
   .hero-name { font-size: 36px; }
   .hero-sub { font-size: 15px; max-width: none; margin-bottom: 1.25rem; }
-  .hero-avatar { width: 72px; height: 72px; }
+  .hero-avatar { width: 72px; height: 72px; margin-left: 0; }
+  
   .cta-row { flex-direction: column; align-items: stretch; }
   .cta-row .btn-outline { width: 100%; padding: 10px 14px; border-radius: 10px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
@@ -465,12 +479,24 @@ body::before {
 }
 
 @media (max-width: 420px) {
-  .hero { flex-direction: column; gap: 0.75rem; padding-right: 1.25rem; }
-  .hero-avatar { width: 48px; height: 48px; margin-left: 0; align-self: flex-end; }
+  /* On tight mobile setups, items stack in column format, placing the picture on top */
+  .hero { 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    gap: 1.25rem; 
+    padding: 2rem 1.25rem; 
+  }
+  .hero-avatar { 
+    width: 80px; 
+    height: 80px; 
+    margin: 0 auto; 
+    align-self: center; 
+  }
   .services-grid { grid-template-columns: 1fr; }
 }
 
-/* REDUCED MOTION */
+/* REDUCED MOTION ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
   .hero-content > *, .hero-avatar, .proj-card, .badge, .skill-chip, .reveal, body::before { animation: none !important; transition: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
