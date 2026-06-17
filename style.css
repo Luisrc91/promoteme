@@ -70,9 +70,10 @@ body::before {
 }
 
 .floating-header.shrink {
-  max-width: 280px; 
-  background: rgba(15, 23, 42, 0.75); 
+  max-width: 340px; /* Expanded to give bracket notation breathing room */
+  background: rgba(15, 23, 42, 0.80); 
   border-color: rgba(255, 255, 255, 0.18);
+  padding: 0.45rem 1rem 0.45rem 1.4rem;
 }
 
 .header-inner {
@@ -537,7 +538,7 @@ body::before {
 @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @keyframes chipPulse { 0%, 100% { box-shadow: 0 6px 18px rgba(var(--chip-glow), 0.04); transform: translateY(0); } 50% { box-shadow: 0 12px 30px rgba(var(--chip-glow), 0.12); transform: translateY(-3px); } }
 
-/* ── RESPONSIVE MEDIA BREAKPOINTS ── */
+/* ── RESPONSIVE MEDIA BREAKPOINTS & FIXED MOBILE OVERRIDES ── */
 @media (max-width: 900px) { .hero-avatar { width: 110px; height: 110px; } }
 @media (max-width: 700px) { .hero-avatar { width: 88px; height: 88px; } }
 
@@ -545,30 +546,33 @@ body::before {
   body { padding: 6.5rem 0.75rem 1.25rem; }
   .page { max-width: 100%; padding: 0 0.5rem; }
   
-  /* ── LOOSENED MOBILE CAPSULE CONFIGURATION ── */
+  /* Initial default state on mobile layout */
   .floating-header { 
     top: 1rem; 
     width: calc(100% - 1.5rem); 
     max-width: 480px; 
-    padding: 0.65rem 1rem 0.65rem 1.4rem; 
+    padding: 0.65rem 1.2rem 0.65rem 1.4rem; 
   }
   
+  /* Scrolled dynamic shrink state on mobile viewports */
   .floating-header.shrink { 
-    max-width: 310px; 
-    padding: 0.55rem 0.85rem 0.55rem 1.25rem;
+    max-width: 330px; /* Restructured boundaries to prevent structural folding */
+    padding: 0.55rem 1.1rem 0.55rem 1.3rem; 
   }
   
   .header-inner {
-    gap: 12px; 
+    gap: 16px; /* Permanent buffer separation matrix */
   }
 
   .header-logo {
-    font-size: 14px; 
+    font-size: 13.5px; 
+    white-space: nowrap; /* Rigid axis lock to force logo on a single line */
   }
 
   .header-btn {
     font-size: 12px; 
-    padding: 5px 12px; 
+    padding: 6px 12px; 
+    white-space: nowrap;
   }
   
   .hero { 
